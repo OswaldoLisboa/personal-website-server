@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/about', async (req, res) => {
-  const education = await Education.find().sort({'relevance': -1});
+  const education = await Education.find();
   res.send(education);
 });
 
