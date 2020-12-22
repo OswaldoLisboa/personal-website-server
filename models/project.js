@@ -45,11 +45,6 @@ const projectSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
-  imgLink: {
-    type: String,
-    required: true,
-    trim: true
-  },
   tags: {
     type: String,
     required: true,
