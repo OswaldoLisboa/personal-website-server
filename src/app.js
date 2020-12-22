@@ -32,7 +32,7 @@ app.get('/projects', async (req, res) => {
    const re = new RegExp(_tag, 'i');
    try {
      let projects;
-     if (_tag === '*') {
+     if (_tag === 'all') {
        projects = await Project.find().sort({'relevance': -1})
      } else {
        projects = await Project.find({ tags: re }).sort({'relevance': -1});
