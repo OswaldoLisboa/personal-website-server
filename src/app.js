@@ -31,7 +31,12 @@ app.get('/projects', async (req, res) => {
    const _tag = req.params.tag;
    const re = new RegExp(_tag, 'i');
    try {
-     const projects = await Project.find({ tags: re });
+     let projects;
+     if (_tag === '*') {
+       projects = await Project.find().sort({'relevance': -1})
+     } else {
+       projects = await Project.find({ tags: re }).sort({'relevance': -1});
+     }
      res.send(projects);
    } catch (error) {
      res.status(500).send();
