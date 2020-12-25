@@ -20,7 +20,7 @@ app.get('/projects', async (req, res) => {
     const tagsRaw = await Project.find().select('tags -_id')
     const tags = [...new Set(tagsRaw.map(item => {
       return item.tags.split(', ');
-    }).flat())];
+    }).flat())].sort();
     res.send({ projects, tags });
   } catch (error) {
     res.status(500).send();
